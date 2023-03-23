@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "protobuf_demo/api";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/field_mask.proto";
+
+message NoticeReaderRequest{
+  string msg = 1;
+  // 支持多个值，共用一块内存，只能选一个
+  oneof notice_way {
+    string email = 2;
+    string phone = 3;
+  }
+}
+
+message Book {
+  string title = 1;
+  string author = 2;
+  google.protobuf.Int64Value price = 3;  // 不要这么改，最好增加一个，防止版本错乱
+  //optional int64 price = 3;  // 表示可以传，可以不传,需要版本>3.15
+  google.protobuf.DoubleValue sale_price = 4;  // float64
+  google.protobuf.StringValue memo = 5; // string
+
+  message Info {
+    string a = 1;
+    string b = 2;  // book.info.b
+  }
+  Info info = 6;  // 嵌套
+
+}
+// UpdateBookRequest 更新书籍信息
+message UpdateBookRequest {
+  string op = 1;  // 操作人
+  Book book = 2; // 需要更新的书籍信息
+  google.protobuf.FieldMask update_mask = 3;  // 需要更新的字段，每次请求获取的更新字段可能不同
+}
