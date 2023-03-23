@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package  = "client/proto";
+
+package pb;
+
+service Calcu {
+    rpc Add (Input) returns (Output) {}
+}
+
+message Input {
+    int64 num1 = 1;
+    int64 num2 = 2;
+}
+
+message Output {
+    int64 ans = 1;
+}

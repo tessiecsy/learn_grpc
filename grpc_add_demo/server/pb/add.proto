@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package  = "server/pb";
+
+package pb;
+
+service Calcu {
+    rpc Add (Input) returns (Output) {}
+}
+
+
+// 一般message都是大写驼峰，里面的字段是小写+下划线
+message Input {
+    int64 num1 = 1;
+    int64 num2 = 2;
+}
+
+message Output {
+    int64 ans = 1;
+}
