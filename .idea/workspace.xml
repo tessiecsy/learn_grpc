@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bace282c-45d5-480c-9b2b-5f78164f7c03" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/bookstore_client/bookstore_client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookstore_client/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookstore_client/pb/bookstore.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookstore_client/pb/bookstore.pb.gw.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookstore_client/pb/bookstore.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookstore_client/pb/bookstore_grpc.pb.go" afterDir="false" />
+    <list default="true" id="bace282c-45d5-480c-9b2b-5f78164f7c03" name="Changes" comment="bookstore_client">
+      <change afterPath="$PROJECT_DIR$/bookstore_client/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStore/tmp/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookstore_client/tmp/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc_name_resolving/hello_client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc_name_resolving/hello_client/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,31 +38,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "D:/Goland_code/learn_grpc/bookstore_client"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Goland_code/learn_grpc/load_balance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Goland_code\learn_grpc\load_balance" />
       <recent name="D:\Goland_code\learn_grpc\bookstore_client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Goland_code\learn_grpc\bookstore_client" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build main.go">
     <configuration name="go build bookstore_client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="learn_grpc" />
       <working_directory value="$PROJECT_DIR$/bookstore_client" />
@@ -73,8 +73,17 @@
       <filePath value="$PROJECT_DIR$/bookstore_client/bookstore_client.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="learn_grpc" />
+      <working_directory value="$PROJECT_DIR$/grpc_name_resolving/hello_client" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/grpc_name_resolving/hello_client/main.go" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build bookstore_client" />
       </list>
     </recent_temporary>
@@ -96,7 +105,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="bookstore_client" />
+    <option name="LAST_COMMIT_MESSAGE" value="bookstore_client" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

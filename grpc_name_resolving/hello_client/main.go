@@ -15,7 +15,7 @@ import (
 // grpc 客户端
 // 调用server端的 SayHello 方法
 
-var name = flag.String("name", "七米", "通过-name告诉server你是谁")
+var name = flag.String("name", "q1mi", "通过-name告诉server你是谁")
 
 func main() {
 	flag.Parse() // 解析命令行参数
@@ -35,7 +35,7 @@ func main() {
 	//然后调用它的Build()方法构建我们自定义的q1miResolver，并调用ResolveNow()方法获取到服务端地址。
 	conn, err := grpc.Dial("q1mi:///resolver.liwenzhou.com",
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		//grpc.WithResolvers(&q1miResolverBuilder{}),
+		//grpc.WithResolvers(&q1miResolverBuilder{}),  // 此时不用写init函数
 	)
 
 	// 自定义解析 + 轮询的负载均衡
