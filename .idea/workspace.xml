@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bace282c-45d5-480c-9b2b-5f78164f7c03" name="Changes" comment="bookstore_client">
-      <change afterPath="$PROJECT_DIR$/bookstore_client/readme.md" afterDir="false" />
+    <list default="true" id="bace282c-45d5-480c-9b2b-5f78164f7c03" name="Changes" comment="名称解析与负载均衡">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookStore/tmp/main.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookstore_client/tmp/main.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc_name_resolving/hello_client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc_name_resolving/hello_client/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +47,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Goland_code/learn_grpc/load_balance&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Chang&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -106,7 +102,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="bookstore_client" />
-    <option name="LAST_COMMIT_MESSAGE" value="bookstore_client" />
+    <MESSAGE value="名称解析与负载均衡" />
+    <option name="LAST_COMMIT_MESSAGE" value="名称解析与负载均衡" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
