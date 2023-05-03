@@ -7,3 +7,8 @@
    1. 配置健康检查 （定义服务类型、超时时间、探测间隔、注销信息等）
    2. 定义一个consul服务体 `api.AgentServiceRegistration`
    3. 注册 `client.Agent().ServiceRegister(srv)`
+
+## consul服务注销
+1. 创建一个退出通道`quitCh`，阻塞监测退出信号
+2. `cc.Agent().ServiceDeregister(serviceID)`
+3. 启动服务要放在goroutine中

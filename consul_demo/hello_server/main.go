@@ -6,6 +6,9 @@ import (
 	"github.com/hashicorp/consul/api"
 	"hello_server/pb"
 	"net"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
@@ -55,18 +58,19 @@ func main() {
 		fmt.Printf("GetOutboundIP failed,err:%v\n", err)
 		return
 	}
-	fmt.Printf("ip is:%s", ipinfo.String())
+	fmt.Printf("ip is:%s\n", ipinfo.String())
 	// 把服务注册到consul上
 	// 1.定义我们的服务
 	// 配置健康检查，告诉consul如何进行健康检查
 	check := &api.AgentServiceCheck{
 		GRPC:                           fmt.Sprintf("%s:%d", ipinfo.String(), 8976), // 外网地址
 		Timeout:                        "5s",
-		Interval:                       "5s",  // 间隔
-		DeregisterCriticalServiceAfter: "10s", // 10s后注销掉不健康的节点
+		Interval:                       "5s", // 间隔
+		DeregisterCriticalServiceAfter: "1m", // 1minute后注销掉不健康的节点,文档默认最小1分钟，实际一般30s，时间尽量长一点，以防网络抖动
 	}
+	serviceID := fmt.Sprintf("%s-%s-%d", serviceName, "127.0.0.1", 8976)
 	srv := &api.AgentServiceRegistration{
-		ID:      fmt.Sprintf("%s-%s-%d", serviceName, "127.0.0.1", 8976),
+		ID:      serviceID,
 		Name:    serviceName,
 		Tags:    []string{"tessie"},
 		Port:    8976,
@@ -77,9 +81,23 @@ func main() {
 	cc.Agent().ServiceRegister(srv)
 
 	// 启动服务
-	err = s.Serve(l)
+	// 要放到一个goroutine中，程序才能向下走到quitCh，否则是主线程一直在运行着处理client请求
+	go func() {
+		if err := s.Serve(l); err != nil {
+			fmt.Printf("failed to serve,err:%v\n", err)
+			return
+		}
+	}()
+	// Ctrl+C 退出程序
+	fmt.Println("wait to quit...")
+	quitCh := make(chan os.Signal, 1)
+	signal.Notify(quitCh, syscall.SIGTERM, syscall.SIGINT)
+	<-quitCh
+	// 程序退出的时候注销服务
+	fmt.Println("service out...")
+	err = cc.Agent().ServiceDeregister(serviceID)
 	if err != nil {
-		fmt.Printf("failed to serve,err:%v\n", err)
+		fmt.Printf("ServiceDeregister failed,err;%v\n", err)
 		return
 	}
 }
