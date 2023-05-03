@@ -14,7 +14,7 @@ import (
 // grpc 客户端
 // 调用server端的 SayHello 方法
 
-var name = flag.String("name", "七米", "通过-name告诉server你是谁")
+var name = flag.String("name", "tessie", "通过-name告诉server你是谁")
 
 func main() {
 	flag.Parse() // 解析命令行参数
@@ -49,7 +49,8 @@ func main() {
 	*/
 
 	conn, err := grpc.Dial(
-		"consul://192.168.6.128:8500/hello", // 使用consul名称解析器
+		"consul://192.168.6.128:8500/hello",                                     // 使用consul名称解析器
+		grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy": "round_robin"}`), // 指定负载均衡策略
 		grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("grpc.Dial failed,err:%v", err)
@@ -60,14 +61,16 @@ func main() {
 	c := proto.NewGreeterClient(conn) // 使用生成的Go代码
 	// 4.发起rpc调用
 	// 调用RPC方法
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
-	defer cancel()
-	resp, err := c.SayHello(ctx, &proto.HelloRequest{Name: *name})
-	if err != nil {
-		log.Printf("c.SayHello failed, err:%v", err)
-		return
+	for i := 0; i < 10; i++ {
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
+		defer cancel()
+		resp, err := c.SayHello(ctx, &proto.HelloRequest{Name: *name})
+		if err != nil {
+			log.Printf("c.SayHello failed, err:%v", err)
+			return
+		}
+		// 拿到了RPC响应
+		log.Printf("resp:%v", resp.GetReply())
 	}
-	// 拿到了RPC响应
-	log.Printf("resp:%v", resp.GetReply())
 
 }

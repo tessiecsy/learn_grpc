@@ -8,3 +8,6 @@
 ### case2
 使用consul名称解析器  
 `grpc.Dial("consul://xxxx:8500/hello",, grpc.WithTransportCredentials(insecure.NewCredentials()))`
+
+## consul负载均衡
+round_robin
